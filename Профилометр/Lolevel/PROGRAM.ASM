@@ -69,16 +69,17 @@ loop_acp:
 		and c			; 4
 		ld e,a			; 4
 		
-		; delay 766,4444444 tacts for 57600 speed
-		call delay 107
-		call delay 107
-		call delay 107
-		call delay 107
-		call delay 107
-		call delay 107
-		call delay 107
-		ld hl,TMP		;10
-		ld (hl),a		; 7 sum = 766
+		; delay 694,4444444 tacts for 57600 speed
+		call delay_107
+		call delay_107
+		call delay_107
+		call delay_107
+		call delay_107
+		call delay_107
+		call delay_51	; 693
+		
+		; common delay 83
+		call delay_83
 		
 		call acp_query
 		jr z,error_acp	;12,7
