@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="profilom.exe"/>
+    <OBJFILES value="profilom.obj MainFrm.obj ScanParFrm.obj View2dFrm.obj log.obj 
+      View3dFrm.obj uScanningForm.obj Profilometr.obj GraphFrm.obj Plot.obj 
+      ScanData.obj Driver.obj"/>
+    <RESFILES value="profilom.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) MainFrm.dfm ScanParFrm.dfm View2dFrm.dfm View3dFrm.dfm 
+      uScanningForm.dfm Profilometr.dfm GraphFrm.dfm Plot.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value="dclusr50.lib dclocx50.lib VCL50.lib"/>
+    <SPARELIBS value="VCL50.lib dclocx50.lib dclusr50.lib"/>
+    <PACKAGES value="bcb97axserver50.bpi Vcl50.bpi Vclbde50.bpi TeeUI50.bpi TeeDB50.bpi Tee50.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="tlink32"/>
+    <USERDEFINES value="STUB;_DEBUG"/>
+    <SYSDEFINES value="NO_STRICT"/>
+    <MAINSOURCE value="profilom.cpp"/>
+    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp -DSTUB -D_DEBUG STUB 
+      STUB STUB STUB STUB STUB STUB STUB STUB STUB -boa"/>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl50.csm -Hc -Vx -Ve -X- -r- -a8 -6 -b- -k -y -v -vi- 
+      -c -tW -tWM"/>
+    <PFLAGS value="-$Y+ -$W -$O- -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zi"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1049
+CodePage=1251
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=10
+Item0=$(BCB)\include;$(BCB)\include\vcl
+Item1=c:\Program Files\Borland\CBuilder5\Projects\;D:\Program Files\Borland\CBuilder5\Projects\;D:\Patterns\;D:\Microsoft Visual Studio\Common\Graphics\Icons\Industry\;driver;D:\Паттерны\;$(BCB)\include;$(BCB)\include\vcl
+Item2=c:\Program Files\Borland\CBuilder5\Projects;D:\Program Files\Borland\CBuilder5\Projects\;D:\Patterns\;D:\Microsoft Visual Studio\Common\Graphics\Icons\Industry\;driver;D:\Паттерны\;$(BCB)\include;$(BCB)\include\vcl
+Item3=D:\Program Files\Borland\CBuilder5\Projects\;D:\Patterns\;D:\Microsoft Visual Studio\Common\Graphics\Icons\Industry\;driver;D:\Паттерны\;$(BCB)\include;$(BCB)\include\vcl
+Item4=D:\Program Files\Borland\CBuilder5\Projects;D:\Patterns\;..\..\..\..\Microsoft Visual Studio\Common\Graphics\Icons\Industry;driver;D:\Паттерны\;$(BCB)\include;$(BCB)\include\vcl
+Item5=D:\Patterns\;..\..\..\..\Microsoft Visual Studio\Common\Graphics\Icons\Industry;driver;D:\Паттерны\;$(BCB)\include;$(BCB)\include\vcl
+Item6=..\..\..\..\Microsoft Visual Studio\Common\Graphics\Icons\Industry;driver;D:\Паттерны\;$(BCB)\include;$(BCB)\include\vcl
+Item7=D:\Паттерны;$(BCB)\include;$(BCB)\include\vcl
+Item8=D:\Паттерны;D:\Паттерны\imp;D:\Documents and Settings\sa\Рабочий стол\Паттерны\imp;D:\Documents and Settings\sa\Рабочий стол\Паттерны;d:\program files\borland\cbuilder5\Lib;D:\Program Files\Borland\CBuilder5\Projects;..\..\..\..\Microsoft Visual Studio\Common\Graphics\Icons\Industry;driver;$(BCB)\include;$(BCB)\include\vcl
+Item9=driver;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=12
+Item0=$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item1=c:\Program Files\Borland\CBuilder5\Projects\;D:\Patterns\;$(BCB)\Projects\Lib;D:\Program Files\Borland\CBuilder5\Projects\;D:\Lib\;D:\Microsoft Visual Studio\Common\Graphics\Icons\Industry\;driver;$(BCB)\lib\obj;$(BCB)\lib
+Item2=c:\Program Files\Borland\CBuilder5\Projects;D:\Patterns\;$(BCB)\Projects\Lib;D:\Program Files\Borland\CBuilder5\Projects\;D:\Lib\;D:\Microsoft Visual Studio\Common\Graphics\Icons\Industry\;driver;$(BCB)\lib\obj;$(BCB)\lib
+Item3=D:\Patterns\;$(BCB)\Projects\Lib;D:\Program Files\Borland\CBuilder5\Projects\;D:\Lib\;D:\Microsoft Visual Studio\Common\Graphics\Icons\Industry\;driver;$(BCB)\lib\obj;$(BCB)\lib
+Item4=D:\Patterns\;$(BCB)\Projects\Lib;D:\Program Files\Borland\CBuilder5\Projects\;..\..\Lib;..\..\..\..\Microsoft Visual Studio\Common\Graphics\Icons\Industry;driver;$(BCB)\lib\obj;$(BCB)\lib
+Item5=D:\Паттерны\;$(BCB)\Projects\Lib;D:\Program Files\Borland\CBuilder5\Projects\;..\..\Lib;..\..\..\..\Microsoft Visual Studio\Common\Graphics\Icons\Industry;driver;$(BCB)\lib\obj;$(BCB)\lib
+Item6=D:\Паттерны;$(BCB)\Projects\Lib;D:\Program Files\Borland\CBuilder5\Projects\;..\..\Lib;..\..\..\..\Microsoft Visual Studio\Common\Graphics\Icons\Industry;driver;$(BCB)\lib\obj;$(BCB)\lib
+Item7=D:\Паттерны\;D:\Паттерны\BCOBJ\;$(BCB)\Projects\Lib;D:\Program Files\Borland\CBuilder5\Projects\;..\..\Lib;..\..\..\..\Microsoft Visual Studio\Common\Graphics\Icons\Industry;driver;$(BCB)\lib\obj;$(BCB)\lib
+Item8=D:\Паттерны;D:\Паттерны\BCOBJ\;$(BCB)\Projects\Lib;D:\Program Files\Borland\CBuilder5\Projects\;..\..\Lib;..\..\..\..\Microsoft Visual Studio\Common\Graphics\Icons\Industry;driver;$(BCB)\lib\obj;$(BCB)\lib
+Item9=D:\Паттерны\BCOBJ;$(BCB)\Projects\Lib;D:\Program Files\Borland\CBuilder5\Projects;..\..\Lib;..\..\..\..\Microsoft Visual Studio\Common\Graphics\Icons\Industry;driver;$(BCB)\lib\obj;$(BCB)\lib
+Item10=D:\Паттерны;D:\Паттерны\imp;D:\Documents and Settings\sa\Рабочий стол\Паттерны\imp;D:\Documents and Settings\sa\Рабочий стол\Паттерны;$(BCB)\Projects\Lib;D:\Program Files\Borland\CBuilder5\Projects;..\..\Lib;..\..\..\..\Microsoft Visual Studio\Common\Graphics\Icons\Industry;driver;$(BCB)\lib\obj;$(BCB)\lib
+Item11=driver;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=4
+Item0=STUB;_DEBUG
+Item1=STUB
+Item2=_DEBUG, STUB
+Item3=_DEBUG
+
+[HistoryLists\hIBPIOutputDir]
+Count=2
+Item0=D:\Паттерны\BCOBJ\
+Item1=D:\Паттерны\BCOBJ
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>
