@@ -1,20 +1,35 @@
 ;----------------------------------------------------------------------------
 stack_ptr	.equ 2100h
-ram		.equ 2000h
+RAM		.equ 2000h
 ; variables
-acp_Lbyte	.equ ram
-acp_Hbyte	.equ ram+1
+IO1_A	.equ	00h
+IO1_B	.equ	01h
+IO1_C	.equ	02h
+IO1_D	.equ	03h
 
+IO2_A	.equ	00h
+IO2_B	.equ	01h
+IO2_C	.equ	02h
+IO2_D	.equ	03h
+
+IO3_A	.equ	00h
+IO3_B	.equ	01h
+IO3_C	.equ	02h
+IO3_D	.equ	03h
+
+TMP		.equ	RAM
+
+ACP_ERROR_CODE	.equ	0FFh	; ACP didn't set until 10 cycles
 
 
 		.org 0h 			;Общий старт с 0000h
 		ld sp,stack_ptr 		; указатель стека
 		
 		ld a,10011001b	; init U6 mode 0, PA in, PB out, PC in
-		out (011h),a	;
+		out (IO1_D),a	;
 		
 		ld a,10001001b	; init U7 mode 0, PA out, PB out, PC in
-		out (111b),a	;
+		out (IO2_D),a	;
 
 main:		; main loop
 		call recv_data	; receive byte to accumulator
@@ -38,13 +53,79 @@ main:		; main loop
 
 ; Requests
 req_acp:
-		call acp_com
-		ld a,(acp_LByte)
-		call transmit_data
-		ld a,(acp_HByte)
-		call transmit_data
+		call recv_char
+		and 0FEh	; make odd
+		ld c,a
+		call recv_char
+		ld b,a
+loop_acp:
+		push bc			;11
+		
+		call acp_query
+		jr z,error_acp	;12,7
+		in a,(IO1_A)	;11
+		call send_char		
+		ld a,0001111b	;11
+		and c			; 4
+		ld e,a			; 4
+		
+		; delay 766,4444444 tacts for 57600 speed
+		call delay 107
+		call delay 107
+		call delay 107
+		call delay 107
+		call delay 107
+		call delay 107
+		call delay 107
+		ld hl,TMP		;10
+		ld (hl),a		; 7 sum = 766
+		
+		call acp_query
+		jr z,error_acp	;12,7
+		ld a,c			; 4
+		sla a			; 8
+		sla a			; 8
+		sla a			; 8
+		sla a			; 8
+		or e			; 4
+		call send_char
+		in a,(IO1_A)	;11
+		call sq_send_char
+		pop bc			;10
+		dec bc			; 6
+		dec bc			; 6
+		ld a,b			; 4
+		or c			; 4
+		jp nz,loop_acp	;10
+		
+		jp main
+error_acp:
+		pop bc
+		ld a,ACP_ERROR_CODE
+		call send_char
 		jp main
 
+acp_query:
+		in a,(IO1_B)	;11
+		and 11111110b	; 7
+		out (IO1_B),a	;11
+		ld b,10			; 7 ????
+cont_acp:
+		in a,(IO1_B)	;11
+		xor 00000010b	; 7
+		out (IO1_B),a	;11
+		in a,(IO1_C)	;11
+		bit 4,a			; 8
+		jr nz, end_acp	;12,7
+		djnz cont_acp	;13
+end_acp:
+		ld c,a			; 4
+		in a,(IO1_B)	;11
+		or 00000011b	; 7
+		out (IO1_B),a	;11
+		and b			; 4	z=(b==0)
+		ret				;10
+		
 req_motor_rstep:
 		call motor_rstep
 		jp main
@@ -106,49 +187,6 @@ motor_rstep:	in a,(01h)
 delay_step:
 		ret
 
-;----------------------------------------------------------------------------
-;Процедура АЦП
-;----------------------------------------------------------------------------
-acp_com:	in a,(01h)
-		and 11111110b
-		out (01h),a
-
-		ld b,58
-
-cont_acp:	in a,(01h)
-		xor 00000010b
-		out (01h),a
-
-		ld c,1
-rep_con:	in a,(02h)
-		and 00010000b
-		jp nz, end_acp
-		dec c
-		jp nz, rep_con
-
-		djnz cont_acp
-
-		ld a,00h
-;		ld (acp_Lbyte),a
-;		ld (acp_Hbyte),a
-		ld d,0
-		ld e,0
-		in a,(01h)
-		or 00000011b
-		out (01h),a
-		ret
-
-end_acp:	in a,(00h)
-		ld (acp_Lbyte),a
-		ld e,a
-		in a,(02h)
-		and 00001111b
-		ld (acp_Hbyte),a
-		ld d,a
-		in a,(01h)
-		or 00000011b
-		out (01h),a
-		ret
 
 ;----------------------------------------------------------------------------
 
